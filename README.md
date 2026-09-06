@@ -51,6 +51,40 @@ Claude Code 用 `./install.sh --claude` 或 `.\install.ps1 -Claude`。
 
 装完在对话里说「用 pptgen 做一套……」即可。`{baseDir}` 就是 skill 目录，不要写死某台机器的绝对路径。
 
+## Windows 用户日常怎么用
+
+装的是 **Cursor + 这个 skill**，不是一个双击就能出 PPT 的软件。人负责拍板和登录，agent 负责调研、写稿、出图、排版、打包。
+
+**只做一次**
+
+1. 装 [Cursor](https://cursor.com)、[Node 18+](https://nodejs.org)、[Python 3.10+](https://www.python.org/downloads/)（安装 Python 时勾上 Add to PATH）。
+2. 装导出引擎：有 Microsoft PowerPoint 就够；没有就装 [LibreOffice](https://www.libreoffice.org/)。
+3. 克隆本仓库，PowerShell 里：
+
+```powershell
+cd pptgen-skill
+pip install -r requirements.txt
+.\install.ps1
+```
+
+4. 系统环境变量里加 `OPENAI_API_KEY`（出图用，不要发给 agent 让它打印出来）。
+5. 重开 Cursor，打开一个空文件夹当课件工作区（不要把 skill 仓库本身当项目）。
+
+**每一单**
+
+1. 新开 Agent 对话，说清楚场景和学段，例如：「用 pptgen 做一套小学班干部竞选+培训+聘任，按 skill 全流程走。」
+2. 调研时 Cursor 会打开内置浏览器进小红书。弹出登录墙就在这个窗口扫码，扫完回一句「继续」。300012 就自己用日常 Chrome 搜，把藏/评截图贴回去。
+3. agent 写出逐字稿 / 风格词 / 页方案后，看一眼再让它继续出图排版。
+4. 客户包 `字体/` 出来后，先双击装进 Windows（思源黑体 / 宋体），再让它导出逐页图和套壳，否则 PowerPoint 预览会错位。
+5. 结束时它会报绝对路径和 `{短名}-输出全套.zip`。用 WPS 或 PowerPoint 抽几页（尤其表格、大图页）对一下。
+
+**不用做的**
+
+- 不用装 ego-lite（Windows 装不上）。
+- 不用自己写 AppleScript / 开 Keynote。
+- 不要把 `node_modules` 拷来拷去，每个课件项目让它自己 `npm install`。
+- 商品主图仍等你的 1242×1660 模版，skill 不渲。
+
 ## 仓库里有什么
 
 ```
