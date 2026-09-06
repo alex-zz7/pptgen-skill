@@ -4,12 +4,13 @@
 
 **调研要的是一张有实数的表，不是某一种浏览器。** ego lite 是首选，不是硬依赖。Windows 上现在装不了 ego lite（[官方只出了 macOS](https://github.com/citrolabs/ego-lite)），照样做课件。平台细节见 [platforms.md](platforms.md)。
 
-## 用什么（按优先级降级）
+## 用什么
 
-1. **ego lite（`ego-browser`）** — macOS 已装就用。先读本机 `ego-browser` skill。点进笔记：搜索页找到卡片 `a[href*="<id>"]`，取 `a.cover` 的中心坐标 `click([x, y])`，不要 `goto /explore/<id>`（会 300017）。
-2. **用户已经给了藏 / 评 / 截图 / 别人的调研表** — 直接填 `workflow/brief.md`，不再开浏览器。
-3. **Cursor 内置浏览器** — ego 不可用时用。同样只点封面进详情。IP 风控（300012）就停，改回第 2 档。
-4. **都没有** — 列出 4–6 个搜索词，请用户自己搜完把「藏 / 评 / 『求』条数 / 有没有实物件」发回来。停在调研，不要往下编页表。
+打开方式和点法见 [xhs-browser.md](xhs-browser.md)。
+
+- **Windows（默认）**：Cursor 内置浏览器。先扫码登录，再搜，只点封面进详情。过不了登录墙 / 300012 → 把词发给用户，用他们日常登录的浏览器搜完把数字贴回来。
+- **macOS**：有 `ego-browser` 用 ego lite；没有就和 Windows 一样走 Cursor 浏览器。
+- **用户已经贴了藏 / 评 / 截图** — 直接填表，不再开浏览器。
 
 小红书专搜的跟单流程在同伴 skill `xhs-banhui-scan`（和本仓库一起装）。不要 OpenClaw 浏览器，不要 Playwright，不要系统 Chrome 硬闯。
 

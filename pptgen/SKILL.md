@@ -25,6 +25,7 @@ description: >-
 |---|---|
 | 为什么之前会输、市场怎么成交（必读） | [market.md](market.md) · [failures.md](failures.md) |
 | Win / Mac 怎么跑、ego 是不是必须 | [platforms.md](platforms.md) |
+| 小红书怎么打开（Win = Cursor 浏览器） | [xhs-browser.md](xhs-browser.md) |
 | 选哪个场景 | [scenarios.md](scenarios.md) |
 | 调研看什么 | [research.md](research.md) |
 | 什么叫有商业价值的内容 | [content.md](content.md) |

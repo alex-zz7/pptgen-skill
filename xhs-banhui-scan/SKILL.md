@@ -20,7 +20,7 @@ user-invocable: true
 
 ## 触发后先做
 
-1. 登录闸门。未登录就停，把 task space 交给用户在 ego lite 里扫码。
+1. 登录闸门。未登录就停，让用户在**当前这套浏览器**里扫码（Win = Cursor 浏览器，Mac = ego 或 Cursor）。点法见 `pptgen/xhs-browser.md`。
 2. 搜默认词（用户改词则用用户的）。
 3. 按题材聚类，填 [templates/report.md](templates/report.md)。核心产出是 **跟单选品表**。
 4. `{baseDir}/scripts/render-report.py` 出 pdf。
@@ -58,11 +58,14 @@ EOF
 | IP 风控 | 停。不要换 Playwright / OpenClaw。请用户自己搜，把藏/评数字贴回来 |
 | 用户正在控浏览器 | 停，问继续还是结束。不要自己 `takeOverTaskSpace` |
 
-### 没有 ego 时
+### 没有 ego 时（Windows 默认走这里）
 
-1. 用户已贴藏/评/截图 → 直接填 [templates/report.md](templates/report.md)，浏览器栏写实际用的工具。
-2. 否则用 Cursor 内置浏览器打开 `https://www.xiaohongshu.com/search_result?keyword=…`，规则与上面相同（点封面、不直跳详情、不编已售）。
-3. 登录 / 风控仍要停，把词发给用户自己搜。
+完整点法：[pptgen/xhs-browser.md](../pptgen/xhs-browser.md)。
+
+1. 用户已贴藏/评/截图 → 直接填 [templates/report.md](templates/report.md)。
+2. 否则 Cursor 内置浏览器：`browser_navigate` 搜索 URL → `browser_snapshot` 抽卡 → `browser_click` 点封面（不要 `navigate` 到笔记 URL）→ 详情记藏/评 → `Escape`。
+3. 未登录：把 Cursor 浏览器露出来让用户扫码，扫完再继续。
+4. 300012 / 抽不到卡：停，把词发给用户，用他们日常浏览器搜完把数字贴回来。
 
 点进笔记：在搜索页用 `js` 找到卡片 `a[href*="<id>"]`，取其 `section` 里 `a.cover` 的中心坐标，`click([x, y])`（点标题链接不一定打开详情）。不要 `goto` 直跳 `/explore/<id>` 或 `/search_result/<id>`（会 300017）。详情页取 `#detail-title`、`#detail-desc`、`.like-wrapper .count`、`.collect-wrapper .count`、`.chat-wrapper .count`、`.comment-item .content`；按 `Escape` 关闭。
 
@@ -132,7 +135,7 @@ cliLog(data)
 
 ## 报告与交付
 
-目录：`~/.openclaw/workspace/reports/xhs-banhui/YYYY-MM-DD-HHmm/`
+目录：当前项目 `workflow/xhs-scan/YYYY-MM-DD-HHmm/`（没有项目就写到用户主目录 `xhs-banhui-scan/YYYY-MM-DD-HHmm/`）
 
 - `report.md` `raw.json` `report.pdf`
 

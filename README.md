@@ -10,10 +10,7 @@
 
 > ego lite runs on macOS today. Windows and Linux are on the roadmap.
 
-Windows 上现在装不上 ego，不是本 skill 的故障。没有 ego 时：
-
-1. 你把藏 / 评 / 「求课件」条数或截图贴给 agent，直接填调研表；或
-2. 用 Cursor 内置浏览器搜（同样只点封面，不直跳详情，不编已售）。
+Windows 上现在装不上 ego，不是本 skill 的故障。Win 上调研小红书的默认做法是 **Cursor 内置浏览器**：扫码登录 → 搜索 → 点封面进详情 → 记藏/评。过不了风控再改成你自己搜、把数字贴回来。点法见 `pptgen/xhs-browser.md`。
 
 做课件本身（出图、排版、QA、套壳、打包）两边都不需要 ego。详见 `pptgen/platforms.md` 和 `pptgen/research.md`。
 
