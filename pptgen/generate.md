@@ -78,7 +78,7 @@ const { createDeck } = require(path.join(skillHome(), 'scripts', 'theme.js'));
 const deck = createDeck({
   title, kicker, footer,
   palette: { paper, card, ink, title, accent, accent2, muted, line, banner, bannerText },   // ≤6 主色，style-bible 里定
-  fonts: { title: 'Source Han Sans SC Heavy', body: 'Source Han Sans SC', titleBold: false }, // 典礼感用 'Source Han Serif CN Heavy'
+  fonts: { title: '微软雅黑', body: '微软雅黑', titleBold: true }, // 典礼感标题可改 '宋体'
   assets: { cover: A('el-cover.png'), bg: A('el-bg.png') },                                   // 一份课件一张背景
   skin: { titleHighlight: 'FFD54A', bannerStyle: 'pill', stickers: ['star', 'cloud'],
           coverAlign: 'center', coverZoom: 1.12, coverShiftY: 0.55, coverBg: 'BFE0F8', coverTop: 0.85, coverSubBand: '2E86DE' },

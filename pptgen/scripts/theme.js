@@ -11,7 +11,7 @@
  *
  * Usage (in a project build-ppt.js):
  *   const { createDeck } = require(path.join(process.env.PPTGEN_HOME
- *     || /* ~/.cursor|~/.claude|~/.agents /skills/pptgen */, 'scripts/theme.js'));
+ *     || '<skillsDir>/pptgen', 'scripts/theme.js'));
  *   const deck = createDeck({ ...see DEFAULTS... });
  *   deck.cover({...}); const s = deck.page({...}); deck.cards(s, [...]); deck.banner(s, '...');
  *   await deck.save('/abs/path.pptx');
@@ -108,9 +108,9 @@ const DEFAULTS = {
     bannerText: 'FFFFFF',
   },
   fonts: {
-    title: 'Source Han Sans SC Heavy', // 标题字（Heavy 族自身就是重量级，不再加粗）
-    body: 'Source Han Sans SC',        // 正文字
-    titleBold: false,                  // true only for families that have a real Bold face
+    title: '微软雅黑',   // Windows / WPS 自带，不随包附字体
+    body: '微软雅黑',
+    titleBold: true,
   },
   type: {                      // type scale, pt
     h1: 40, h2: 32, lead: 18, cardTitle: 20, body: 17, small: 13, banner: 18, badge: 11,

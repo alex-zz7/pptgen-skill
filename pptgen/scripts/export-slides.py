@@ -219,7 +219,7 @@ def main():
         "  macOS   : 安装 Keynote，或 LibreOffice + `pip install pypdfium2`\n"
         "  Windows : 安装 Microsoft PowerPoint，或 LibreOffice + `pip install pypdfium2`\n"
         "  Linux   : 安装 LibreOffice + `pip install pypdfium2`\n"
-        "导出前先把客户包 `字体/` 里的思源字体装进系统，否则光栅化会错位。"
+        "课件字体是微软雅黑 / 宋体。制作机没有的话，用 WPS 预览即可。"
     )
 
 

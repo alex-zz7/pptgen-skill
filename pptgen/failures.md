@@ -25,7 +25,7 @@
 
 **以后的规则：**
 
-- **只用可随包分发的开源字体**：正文 `Source Han Sans SC`、标题 `Source Han Sans SC Heavy`（Heavy 族不加粗）、典礼类标题 `Source Han Serif CN Heavy`。字体 otf 放进客户文件夹 `字体/`，注意事项写"先安装字体"。
+- 后来随包附了思源 otf。用户 2026-09-06 说字体文件夹多余，已改回**微软雅黑**（WPS 自带），客户包不再带 `字体/`。行距仍要写死。
 - **行距显式化**：正文文本框写死 `lineSpacingMultiple: 1.2` + `paraSpaceAfter: 4`，不依赖平台默认，不用 `fit: 'shrink'`（Keynote 不执行，PowerPoint 只在编辑时执行）。
 - **末段不换行**：富文本最后一个 run 的 `breakLine` 必须为 false，否则多一个空段落。
 - **项目符号缩进写死 14pt**，估算换行时按它算。

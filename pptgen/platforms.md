@@ -10,7 +10,7 @@ pptgen **不依赖 ego-lite 才能做课件**。ego-lite 只是调研小红书�
 |---|---|---|
 | Node 18+ | `pptxgenjs` `sharp` `docx` | 每个项目里 `npm install`，不软链别的项目 |
 | Python 3.10+ | 出图 / QA / 抠图 / 套壳 / 打包 / 导出 | `pip install pillow numpy pypdfium2` |
-| 思源字体 | 标题 Heavy + 正文 Regular/Bold；典礼可加思源宋体 Heavy | 随客户包 `字体/` 分发；**导出前先装进系统** |
+| 字体 | 微软雅黑；典礼标题可用宋体 | 系统自带，客户包不附 `字体/` |
 | 出图 API | `gpt-image-2` via `https://ai-proxy.cc/v1` | key 只走环境变量 `OPENAI_API_KEY`，不打印 |
 
 ## 2. 调研小红书
@@ -33,7 +33,7 @@ python3 {baseDir}/scripts/export-slides.py {pptx} {项目}/qa/slides/{节点}
 
 用户桌面上不该弹出 Keynote / PowerPoint / 终端窗口。禁止 `activate`，禁止 `tell application "Terminal" to do script`。
 
-导出前把 `字体/` 装进系统，否则光栅化用替代字体，QA 图和买家看到的会对不上。
+导出用当前机器上的微软雅黑 / 宋体。Mac 制作机若没有微软雅黑，WPS 里预览即可，不要往客户包里塞 otf。
 
 ## 4. 路径和命令
 
@@ -41,6 +41,6 @@ python3 {baseDir}/scripts/export-slides.py {pptx} {项目}/qa/slides/{节点}
 - 后台长任务用 agent tool 的后台模式，不要新开 Terminal / PowerShell 窗口。
 - `{baseDir}` 解析：skill 自己的目录；项目脚本里 `require(path.join(process.env.PPTGEN_HOME || <skillDir>, 'scripts/theme.js'))`。
 
-## 5. 字体跨平台
+## 5. 字体
 
-正文 `Source Han Sans SC`，标题 `Source Han Sans SC Heavy` 或 `Source Han Serif CN Heavy`。不用苹方 / 兰亭黑 / 微软雅黑 / 楷体当主字体。Windows 没装随包字体 → 行高变、字溢出（见 [failures.md](failures.md) 000）。注意事项页写「先安装 `字体/`」。
+正文和标题用**微软雅黑**，典礼封面可用**宋体**。Windows / WPS 自带，客户包不附 `字体/`。行距 / 段距在 `theme.js` 里写死，不靠买家再装一套字。

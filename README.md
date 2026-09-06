@@ -44,7 +44,7 @@ Claude Code 也可以先 `/pptgen` 再补场景。`{baseDir}` 是 skill 被拷�
 
 ## 日常怎么用（Cursor 和 Claude Code 一样）
 
-人负责拍板、登录小红书、装字体、最后用 WPS/PowerPoint/Keynote 抽查。agent 负责调研表、写稿、出图、排版、打包。
+人负责拍板、登录小红书、最后用 WPS/PowerPoint/Keynote 抽查。agent 负责调研表、写稿、出图、排版、打包。
 
 **只做一次：** 装 Node / Python / 导出引擎；跑安装脚本；系统环境变量加 `OPENAI_API_KEY`（出图，不要让 agent 打印）。
 
@@ -53,7 +53,7 @@ Claude Code 也可以先 `/pptgen` 再补场景。`{baseDir}` 是 skill 被拷�
 1. 在你正在用的那个 agent 里点名 pptgen，说清场景和学段。
 2. 调研：有 ego 或可点击浏览器就让它打开小红书，登录墙就在弹出的窗口扫码。Claude Code 在 Windows 上通常没有这两样——它会把搜索词发给你，你用日常已登录的小红书搜完，把藏/评贴回去。
 3. 看一眼逐字稿 / 风格词 / 页方案，再让它出图排版。
-4. 客户包 `字体/` 先装进**当前这台机器**，再导出逐页图和套壳。
+4. 导出逐页图和套壳前用 WPS / Office 抽几页对一下。
 5. 结束看它报的绝对路径和 zip，抽几页对一下。
 
 **不用做的：** 为 Windows 装 ego-lite；自己写 AppleScript；软链别人的 `node_modules`；等 skill 渲 1242×1660 商品主图。
