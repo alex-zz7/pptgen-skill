@@ -14,7 +14,7 @@ user-invocable: true
 
 只看、只记、只出选品。不点赞、不评论、不发布。
 
-**浏览器按优先级：** 1) macOS 已装 ego lite 就用 `ego-browser`（先读 `ego-browser` skill）；2) 用户已经贴了藏/评/截图就直接填表；3) 否则用 Cursor 内置浏览器，点封面进详情。ego lite 官方目前只出 macOS（https://github.com/citrolabs/ego-lite），Windows 装不上不是故障。禁止 `openclaw browser`，禁止 Playwright，禁止系统 Chrome 硬闯（300012）。
+**浏览器按当前 agent 的能力选**（见 `pptgen/hosts.md`、`pptgen/xhs-browser.md`）：有 `ego-browser` 用 ego；有可点击浏览器（Cursor IDE browser 或用户配的 MCP）就点封面；只有 WebFetch / Claude Code 且没浏览器 → 把词发给用户，用户自己搜完把数字贴回来。禁止 Playwright、OpenClaw、系统 Chrome 硬闯（300012）。
 
 `{baseDir}` 是本 skill 目录。
 
@@ -58,14 +58,13 @@ EOF
 | IP 风控 | 停。不要换 Playwright / OpenClaw。请用户自己搜，把藏/评数字贴回来 |
 | 用户正在控浏览器 | 停，问继续还是结束。不要自己 `takeOverTaskSpace` |
 
-### 没有 ego 时（Windows 默认走这里）
+### 没有 ego 时
 
 完整点法：[pptgen/xhs-browser.md](../pptgen/xhs-browser.md)。
 
 1. 用户已贴藏/评/截图 → 直接填 [templates/report.md](templates/report.md)。
-2. 否则 Cursor 内置浏览器：`browser_navigate` 搜索 URL → `browser_snapshot` 抽卡 → `browser_click` 点封面（不要 `navigate` 到笔记 URL）→ 详情记藏/评 → `Escape`。
-3. 未登录：把 Cursor 浏览器露出来让用户扫码，扫完再继续。
-4. 300012 / 抽不到卡：停，把词发给用户，用他们日常浏览器搜完把数字贴回来。
+2. 当前 agent 有可点击浏览器 → 搜索 URL → 抽卡 → 点封面（不要把笔记 URL 填进地址栏）→ 详情记藏/评 → Escape。未登录就让用户在弹出的窗口扫码。
+3. 只有 WebFetch，或 300012 / 抽不到卡 → 把词发给用户，用日常已登录的小红书搜完把数字贴回来。Claude Code 在 Windows 上通常是这一档。
 
 点进笔记：在搜索页用 `js` 找到卡片 `a[href*="<id>"]`，取其 `section` 里 `a.cover` 的中心坐标，`click([x, y])`（点标题链接不一定打开详情）。不要 `goto` 直跳 `/explore/<id>` 或 `/search_result/<id>`（会 300017）。详情页取 `#detail-title`、`#detail-desc`、`.like-wrapper .count`、`.collect-wrapper .count`、`.chat-wrapper .count`、`.comment-item .content`；按 `Escape` 关闭。
 

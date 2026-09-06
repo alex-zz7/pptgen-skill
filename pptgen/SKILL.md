@@ -3,8 +3,8 @@ name: pptgen
 description: >-
   Builds sellable Chinese teacher courseware packs for Xiaohongshu: pick a
   classroom scenario (班干部竞选/培训/聘任, 立规矩, 开学第一课, 家长会, 心理健康课,
-  安全教育, 节日班会, 品德励志, 教师成长分享), research demand (ego lite on macOS
-  if present; otherwise pasted stats or the Cursor browser — ego is optional), write
+  安全教育, 节日班会, 品德励志, 教师成长分享),   research demand (ego lite if present; otherwise an interactive browser MCP
+  or user-pasted 藏/评 — works in Cursor and Claude Code), write
   逐字稿 + 风格提示词 + 页方案, generate a unified illustration kit, build an
   editable PPTX on one master frame with dense pages (theme.js + qa-density.py),
   printables, classroom-screen showcase images (mockup.py), note copy, shop
@@ -25,7 +25,8 @@ description: >-
 |---|---|
 | 为什么之前会输、市场怎么成交（必读） | [market.md](market.md) · [failures.md](failures.md) |
 | Win / Mac 怎么跑、ego 是不是必须 | [platforms.md](platforms.md) |
-| 小红书怎么打开（Win = Cursor 浏览器） | [xhs-browser.md](xhs-browser.md) |
+| Cursor / Claude Code / 其它客户端 | [hosts.md](hosts.md) |
+| 小红书怎么打开（按 agent 能力降级） | [xhs-browser.md](xhs-browser.md) |
 | 选哪个场景 | [scenarios.md](scenarios.md) |
 | 调研看什么 | [research.md](research.md) |
 | 什么叫有商业价值的内容 | [content.md](content.md) |
@@ -78,7 +79,7 @@ description: >-
 
 ### 1. 调研 → 选场景（[research.md](research.md) · [scenarios.md](scenarios.md)）
 
-按 [research.md](research.md) 的优先级开浏览器（有 ego lite 用 ego，没有就用用户贴的数字或 Cursor 浏览器），搜 4–6 词，记 藏 / 评 / 「求」数 / 实物件帖 / 头部卖家目录。写 `workflow/brief.md`：场景族、节点、买家一句话、六问、实物件清单、比货架多给的一样东西。写 `workflow/design.md` 第一张表「跟不跟」。没有实数就停，不要编。
+按 [xhs-browser.md](xhs-browser.md) 检测当前 agent 有什么再打开小红书（ego / 可点击浏览器 / 请用户贴数），搜 4–6 词，记 藏 / 评 / 「求」数 / 实物件帖 / 头部卖家目录。写 `workflow/brief.md`：场景族、节点、买家一句话、六问、实物件清单、比货架多给的一样东西。写 `workflow/design.md` 第一张表「跟不跟」。没有实数就停，不要编。
 
 ### 2. 逐字稿 · 风格词 · 页方案（[source-plan.md](source-plan.md)）
 

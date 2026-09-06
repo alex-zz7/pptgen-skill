@@ -11,7 +11,7 @@
  *
  * Usage (in a project build-ppt.js):
  *   const { createDeck } = require(path.join(process.env.PPTGEN_HOME
- *     || path.join(require('os').homedir(), '.cursor/skills/pptgen'), 'scripts/theme.js'));
+ *     || /* ~/.cursor|~/.claude|~/.agents /skills/pptgen */, 'scripts/theme.js'));
  *   const deck = createDeck({ ...see DEFAULTS... });
  *   deck.cover({...}); const s = deck.page({...}); deck.cards(s, [...]); deck.banner(s, '...');
  *   await deck.save('/abs/path.pptx');

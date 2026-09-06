@@ -6,11 +6,7 @@
 
 ## 用什么
 
-打开方式和点法见 [xhs-browser.md](xhs-browser.md)。
-
-- **Windows（默认）**：Cursor 内置浏览器。先扫码登录，再搜，只点封面进详情。过不了登录墙 / 300012 → 把词发给用户，用他们日常登录的浏览器搜完把数字贴回来。
-- **macOS**：有 `ego-browser` 用 ego lite；没有就和 Windows 一样走 Cursor 浏览器。
-- **用户已经贴了藏 / 评 / 截图** — 直接填表，不再开浏览器。
+打开方式和点法见 [xhs-browser.md](xhs-browser.md)。先看当前 agent 有什么（[hosts.md](hosts.md)）：有 `ego-browser` 用 ego；有可点击浏览器就点封面；只有 WebFetch 或什么都没有 → 把搜索词发给用户，用户自己搜完把数字贴回来。已经贴了藏/评/截图就直接填表。
 
 小红书专搜的跟单流程在同伴 skill `xhs-banhui-scan`（和本仓库一起装）。不要 OpenClaw 浏览器，不要 Playwright，不要系统 Chrome 硬闯。
 

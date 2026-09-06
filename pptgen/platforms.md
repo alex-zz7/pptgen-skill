@@ -2,7 +2,7 @@
 
 pptgen **不依赖 ego-lite 才能做课件**。ego-lite 只是调研小红书时的首选浏览器，而且 [官方目前只出了 macOS](https://github.com/citrolabs/ego-lite)（Windows / Linux 在他们 roadmap 上）。Win 用户把 skill 装上就能建 PPT、出图、QA、套壳、打包。
 
-`{baseDir}` = 本 skill 目录（Mac 常见 `~/.cursor/skills/pptgen`，Win 常见 `%USERPROFILE%\.cursor\skills\pptgen`）。命令一律 `python3 {baseDir}/scripts/xxx.py`，不要写死 `/Users/…`。
+`{baseDir}` = 本 skill 目录（Cursor：`~/.cursor/skills/pptgen`；Claude Code：`~/.claude/skills/pptgen`；Win 把 `~` 换成 `%USERPROFILE%`）。命令一律 `python3 {baseDir}/scripts/xxx.py`，不要写死某一个客户端的路径。见 [hosts.md](hosts.md)。
 
 ## 1. 运行时（两边都要）
 
@@ -15,9 +15,7 @@ pptgen **不依赖 ego-lite 才能做课件**。ego-lite 只是调研小红书�
 
 ## 2. 调研小红书
 
-Windows **就用 Cursor 内置浏览器** 活搜，步骤写在 [xhs-browser.md](xhs-browser.md)：扫码登录 → 搜索 URL → 点封面 → 记藏/评 → Escape。不是「Win 不能调研」。ego-lite 只是 macOS 上更稳的同一个流程。
-
-过不了登录墙或 300012：把搜索词发给用户，他们用自己已登录的浏览器搜，把数字贴回来。禁止 Playwright / 系统 Chrome 硬闯。
+按当前 agent 有什么打开，不按「是不是 Cursor」。步骤在 [xhs-browser.md](xhs-browser.md)，客户端差异在 [hosts.md](hosts.md)。Claude Code 在 Windows 上通常没有可点击浏览器，默认请用户搜完把藏评贴回来。禁止 Playwright / 系统 Chrome 硬闯。
 
 ## 3. 逐页图导出（视觉 QA + 套壳的输入）
 

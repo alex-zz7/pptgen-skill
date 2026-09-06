@@ -61,9 +61,20 @@ python3 {baseDir}/scripts/cutout.py --in assets/v2 --glob "*-mascot-*.png" --out
 ## 用法（`build-ppt.js`）
 
 ```js
-const { createDeck } = require(require('path').join(
-  process.env.PPTGEN_HOME || require('path').join(require('os').homedir(), '.cursor', 'skills', 'pptgen'),
-  'scripts', 'theme.js'));
+const path = require('path');
+const os = require('os');
+const fs = require('fs');
+function skillHome() {
+  if (process.env.PPTGEN_HOME) return process.env.PPTGEN_HOME;
+  const home = os.homedir();
+  for (const c of [
+    path.join(home, '.cursor', 'skills', 'pptgen'),
+    path.join(home, '.claude', 'skills', 'pptgen'),
+    path.join(home, '.agents', 'skills', 'pptgen'),
+  ]) if (fs.existsSync(path.join(c, 'scripts', 'theme.js'))) return c;
+  return path.join(home, '.cursor', 'skills', 'pptgen');
+}
+const { createDeck } = require(path.join(skillHome(), 'scripts', 'theme.js'));
 const deck = createDeck({
   title, kicker, footer,
   palette: { paper, card, ink, title, accent, accent2, muted, line, banner, bannerText },   // ≤6 主色，style-bible 里定

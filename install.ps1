@@ -1,19 +1,27 @@
-# Copy pptgen + xhs-banhui-scan into the local agent skills directory.
+# Copy pptgen + xhs-banhui-scan into agent skill directories.
+# Default: Cursor AND Claude Code.
 param(
-  [switch]$Claude
+  [switch]$Claude,
+  [switch]$CursorOnly
 )
 $ErrorActionPreference = "Stop"
 $Root = Split-Path -Parent $MyInvocation.MyCommand.Path
-$Target = if ($Claude) {
-  Join-Path $env:USERPROFILE ".claude\skills"
+$targets = @()
+if ($Claude -and -not $CursorOnly) {
+  $targets += (Join-Path $env:USERPROFILE ".claude\skills")
+} elseif ($CursorOnly -and -not $Claude) {
+  $targets += (Join-Path $env:USERPROFILE ".cursor\skills")
 } else {
-  Join-Path $env:USERPROFILE ".cursor\skills"
+  $targets += (Join-Path $env:USERPROFILE ".cursor\skills")
+  $targets += (Join-Path $env:USERPROFILE ".claude\skills")
 }
-New-Item -ItemType Directory -Force -Path $Target | Out-Null
-foreach ($name in @("pptgen", "xhs-banhui-scan")) {
-  $dest = Join-Path $Target $name
-  if (Test-Path $dest) { Remove-Item -Recurse -Force $dest }
-  Copy-Item -Recurse -Force (Join-Path $Root $name) $dest
-  Write-Host "installed $dest"
+foreach ($target in $targets) {
+  New-Item -ItemType Directory -Force -Path $target | Out-Null
+  foreach ($name in @("pptgen", "xhs-banhui-scan")) {
+    $dest = Join-Path $target $name
+    if (Test-Path $dest) { Remove-Item -Recurse -Force $dest }
+    Copy-Item -Recurse -Force (Join-Path $Root $name) $dest
+    Write-Host "installed $dest"
+  }
 }
-Write-Host "done. In Cursor, start a chat and say: 用 pptgen 做一套…"
+Write-Host "done. New chat: 用 pptgen 做一套…   (Claude Code: /pptgen)"
